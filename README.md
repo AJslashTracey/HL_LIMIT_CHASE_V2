@@ -1,4 +1,4 @@
-# Hyperliquid Limit Chase Bot
+# Hyperliquid Limit Chase entry mechanism 
 
 An automated limit order chasing system for Hyperliquid that dynamically adjusts limit orders to stay at the best bid/ask, improving fill rates while maintaining price control.
 
