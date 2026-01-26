@@ -1,0 +1,4 @@
+timestamp,outcome,duration_ms,num_place,num_cancel,num_refresh,side,coin,order_size,tick_size,tolerance_ticks,max_age_ms,max_chase_ticks,test_name
+2026-01-25T20:51:45Z,aborted,500,1,1,0,buy,BTC,0.001,0.5,1,5000,2,test_abort
+2026-01-25T20:51:45Z,filled,500,1,0,0,buy,BTC,0.001,0.5,1,5000,10,test_place_and_fill
+2026-01-25T20:51:45Z,filled,1000,2,1,1,buy,BTC,0.001,0.5,1,5000,10,test_place_refresh_fill
