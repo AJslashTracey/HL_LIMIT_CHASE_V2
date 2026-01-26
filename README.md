@@ -21,16 +21,16 @@ cp .env.example .env
 
 3. **Verify setup:**
 ```bash
-python diagnose_setup.py
+python scripts/diagnose_setup.py
 ```
 
 4. **Run example:**
 ```bash
 # Testnet (safe)
-TESTNET=true python limit_chase_usage.py
+TESTNET=true python examples/limit_chase_usage.py
 
 # Mainnet (real money!)
-python limit_chase_usage.py
+python examples/limit_chase_usage.py
 ```
 
 ## Configuration
@@ -68,8 +68,11 @@ Optional:
 ## Usage Example
 
 ```python
-from limit_chase import LimitChaser, LiveExchangeClient
-from executor import HyperliquidExecutor
+from hl_limit_chase import (
+    HyperliquidExecutor,
+    LimitChaser,
+    LiveExchangeClient
+)
 
 executor = HyperliquidExecutor(testnet=False)
 ex = LiveExchangeClient(executor, "BTC")
@@ -88,11 +91,11 @@ chaser = LimitChaser(
 
 Run integration test with CSV logging:
 ```bash
-TESTNET=true python test_limit_chase.py  # Testnet
-python test_limit_chase.py                # Mainnet
+TESTNET=true python examples/test_limit_chase.py  # Testnet
+python examples/test_limit_chase.py              # Mainnet
 ```
 
-Results are logged to `limit_chase_accuracy.csv`.
+Results are logged to `data/limit_chase_accuracy.csv`.
 
 ## Troubleshooting
 
@@ -104,16 +107,27 @@ Results are logged to `limit_chase_accuracy.csv`.
 
 Before first use:
 1. Make at least one trade in Hyperliquid UI (testnet or mainnet) with your wallet
-2. Run `python diagnose_setup.py` to verify setup
+2. Run `python scripts/diagnose_setup.py` to verify setup
 3. Start with testnet and small order sizes
 
 ## Project Structure
 
-- `limit_chase.py` - Core limit chase logic
-- `executor.py` - Hyperliquid API executor
-- `limit_chase_usage.py` - Basic usage example
-- `test_limit_chase.py` - Integration test with CSV logging
-- `diagnose_setup.py` - Setup diagnostics
+```
+HL_LIMIT_CHASE_V2/
+├── hl_limit_chase/          # Main package
+│   ├── __init__.py
+│   ├── limit_chase.py       # Core limit chase logic
+│   ├── executor.py          # Hyperliquid API executor
+│   └── trade_logger.py      # Trade logging
+├── examples/                # Example scripts
+│   ├── limit_chase_usage.py
+│   └── test_limit_chase.py
+├── scripts/                 # Utility scripts
+│   └── diagnose_setup.py
+├── data/                    # Test data/output
+│   └── limit_chase_accuracy.csv
+└── requirements.txt
+```
 
 ## License
 

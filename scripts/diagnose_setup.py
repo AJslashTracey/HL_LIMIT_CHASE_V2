@@ -116,7 +116,10 @@ print()
 
 # Try to initialize executor and validate account
 try:
-    from executor import HyperliquidExecutor
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent))
+    from hl_limit_chase import HyperliquidExecutor
     
     print("Initializing HyperliquidExecutor...")
     executor = HyperliquidExecutor(testnet=testnet)
