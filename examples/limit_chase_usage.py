@@ -11,8 +11,15 @@ Stops after the first fill or after an abort (price moved beyond max chase).
 import asyncio
 import os
 
-from executor import HyperliquidExecutor, AccountNotInitializedError
-from limit_chase import (
+import sys
+from pathlib import Path
+
+# Add parent directory to path to import package
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from hl_limit_chase import (
+    HyperliquidExecutor,
+    AccountNotInitializedError,
     get_ws_uri,
     LiveExchangeClient,
     LimitChaser,

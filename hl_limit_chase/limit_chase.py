@@ -13,7 +13,7 @@ import websockets
 from dataclasses import dataclass
 from typing import Optional
 
-from executor import HyperliquidExecutor
+from .executor import HyperliquidExecutor
 
 
 def get_ws_uri(testnet: bool) -> str:

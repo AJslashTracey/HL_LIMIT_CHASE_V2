@@ -17,8 +17,15 @@ import os
 from datetime import datetime, timezone
 from typing import Optional
 
-from executor import HyperliquidExecutor, AccountNotInitializedError
-from limit_chase import (
+import sys
+from pathlib import Path
+
+# Add parent directory to path to import package
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from hl_limit_chase import (
+    HyperliquidExecutor,
+    AccountNotInitializedError,
     get_ws_uri,
     LiveExchangeClient,
     LimitChaser,
@@ -38,7 +45,7 @@ MAX_AGE_MS = 5000
 MAX_CHASE_TICKS = 10
 SIDE = "buy"
 
-_CSV_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "limit_chase_accuracy.csv")
+_CSV_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "limit_chase_accuracy.csv")
 _CSV_FIELDS = [
     "timestamp", "outcome", "duration_ms", "num_place", "num_cancel", "num_refresh",
     "side", "coin", "order_size", "tick_size", "tolerance_ticks", "max_age_ms",

@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 import logging
 from typing import Dict, Any
-from trade_logger import TradeLogger
+from .trade_logger import TradeLogger
 from datetime import datetime, timezone
 
 load_dotenv()
