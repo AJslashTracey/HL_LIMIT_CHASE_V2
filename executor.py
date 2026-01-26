@@ -32,13 +32,13 @@ class HyperliquidExecutor:
         """Initialize the Hyperliquid trading executor
         
         Args:
-            testnet (bool): Whether to use testnet (default: True)
+            testnet (bool)
         """
         self.is_testnet = testnet
         network_msg = "TESTNET" if self.is_testnet else "MAINNET"
         logger.info(f"Initializing HyperliquidExecutor for {network_msg}")
 
-        # Get credentials from .env
+        # Get credentials from .env (Privat Key and Public Address (ETH))
         self.pk = os.getenv("PK")
         self.address = os.getenv("ADDRESS")
         
@@ -60,8 +60,13 @@ class HyperliquidExecutor:
             raise ValueError(f"Account {self.address} not found on {network_msg}")
 
         # Initialize trade logger
-        db_url = os.getenv("DATABASE_URL", "postgresql://postgres:REDACTED@postgres.railway.internal:5432/railway")
-        self.trade_logger = TradeLogger(db_url)
+        # DATABASE_URL should be set in .env file - never hardcode credentials!
+        db_url = os.getenv("DATABASE_URL")
+        if db_url:
+            self.trade_logger = TradeLogger(db_url)
+        else:
+            # If no DATABASE_URL provided, use a no-op logger
+            self.trade_logger = TradeLogger("")  # Empty string will use console logging only
         
         logger.info(f"Successfully initialized HyperliquidExecutor for address: {self.address} on {network_msg}")
 
@@ -412,4 +417,6 @@ class HyperliquidExecutor:
             return results
         except Exception as e:
             logger.error(f"Error closing all positions: {e}", exc_info=True)
-            return [] 
+            return []
+
+

@@ -1,5 +1,25 @@
-# This is a placeholder for the TradeLogger class.
-# You will need to implement the actual logging logic here.
+"""
+Trade Logger - Placeholder Implementation
+
+This is a placeholder implementation that logs trades to console.
+To enable database logging:
+
+1. Set DATABASE_URL in .env
+2. Install database driver (e.g., psycopg2 for PostgreSQL)
+3. Implement database connection and logging in the methods below
+
+Example database implementation:
+    import psycopg2
+    from psycopg2.extras import RealDictCursor
+    
+    def __init__(self, db_url: str):
+        self.conn = psycopg2.connect(db_url)
+    
+    def log_entry_trade(...):
+        with self.conn.cursor() as cur:
+            cur.execute("INSERT INTO trades ...")
+            self.conn.commit()
+"""
 
 class TradeLogger:
     def __init__(self, db_url: str):

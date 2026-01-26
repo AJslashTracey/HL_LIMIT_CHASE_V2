@@ -119,30 +119,45 @@ try:
     from executor import HyperliquidExecutor
     
     print("Initializing HyperliquidExecutor...")
-    executor = HyperliquidExecutor(testnet=testnet, enable_logging=False)
+    executor = HyperliquidExecutor(testnet=testnet)
     
     print("✓ Executor initialized successfully")
     print()
     
-    # Run diagnostics
+    # Run diagnostics manually
     print("Running diagnostics...")
-    diagnostics = executor.diagnose_setup()
+    network = "TESTNET" if testnet else "MAINNET"
+    
+    # Get account info
+    try:
+        positions = executor.get_positions()
+        account_exists = True
+        has_positions = len(positions.get('assetPositions', [])) > 0
+        error = None
+    except Exception as e:
+        account_exists = False
+        has_positions = False
+        error = str(e)
+    
+    # Check address match
+    wallet_derived = derived_address
+    address_match = wallet_derived.lower() == using_address.lower() if not is_api_wallet else True
     
     print("\n" + "=" * 60)
     print("DIAGNOSTIC RESULTS")
     print("=" * 60)
-    print(f"Address (account for queries): {diagnostics['address']}" + (" (main)" if diagnostics['is_api_wallet'] else ""))
-    print(f"Type: {'API Wallet (signing) + main (queries)' if diagnostics['is_api_wallet'] else 'Regular Wallet'}")
-    print(f"Network: {diagnostics['network']}")
-    print(f"Wallet derived address: {diagnostics['wallet_derived_address']}")
-    print(f"Address match: {diagnostics['address_match']}")
-    print(f"Account exists: {'✓ Yes' if diagnostics['account_exists'] else '✗ No'}")
-    print(f"Has positions: {'✓ Yes' if diagnostics['account_has_positions'] else '✗ No'}")
+    print(f"Address (account for queries): {using_address}" + (" (main)" if is_api_wallet else ""))
+    print(f"Type: {'API Wallet (signing) + main (queries)' if is_api_wallet else 'Regular Wallet'}")
+    print(f"Network: {network}")
+    print(f"Wallet derived address: {wallet_derived}")
+    print(f"Address match: {'✓ Yes' if address_match else '✗ No'}")
+    print(f"Account exists: {'✓ Yes' if account_exists else '✗ No'}")
+    print(f"Has positions: {'✓ Yes' if has_positions else '✗ No'}")
     
-    if diagnostics['error']:
-        print(f"\n✗ Error: {diagnostics['error']}")
+    if error:
+        print(f"\n✗ Error: {error}")
         print("\nThis usually means:")
-        if diagnostics['is_api_wallet']:
+        if is_api_wallet:
             print("  - The API wallet address doesn't exist on Hyperliquid")
             print("  - The API wallet wasn't properly created")
             print("  - You're using the wrong network (mainnet vs testnet)")
