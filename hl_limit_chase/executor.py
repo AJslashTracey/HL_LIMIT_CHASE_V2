@@ -3,7 +3,7 @@ from eth_account import Account
 import math
 import os
 from dotenv import load_dotenv
-import logging
+import logging 
 from typing import Dict, Any
 from .trade_logger import TradeLogger
 from datetime import datetime, timezone
