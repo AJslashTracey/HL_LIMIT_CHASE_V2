@@ -2,7 +2,7 @@
 
 An automated limit order chasing system for Hyperliquid that dynamically adjusts limit orders to stay at the best bid/ask, improving fill rates while maintaining price control.
 
-## ⚠️ Warning
+## Warning
 
 **This bot trades with real money on mainnet. Always test on testnet first and use small position sizes.**
 
