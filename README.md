@@ -93,19 +93,6 @@ python examples/test_limit_chase.py              # Mainnet
 
 Results are logged to `data/limit_chase_accuracy.csv`.
 
-## Troubleshooting
-
-- **"Account not initialized"**: Make one trade in Hyperliquid UI first
-- **"User not found"**: Verify `ADDRESS` matches wallet and network (testnet/mainnet)
-- **Order fails**: Check balance, tick size, and order size requirements
-
-## Account Setup
-
-Before first use:
-1. Make at least one trade in Hyperliquid UI (testnet or mainnet) with your wallet
-2. Run `python scripts/diagnose_setup.py` to verify setup
-3. Start with testnet and small order sizes
-
 ## Project Structure
 
 ```
