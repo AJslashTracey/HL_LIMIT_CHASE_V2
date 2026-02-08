@@ -1,9 +1,8 @@
 # Hyperliquid Limit Chase entry mechanism 
 
-An automated limit order chasing system for Hyperliquid that dynamically adjusts limit orders to stay at the best bid/ask, improving fill rates while maintaining price control. But why even use a limit chase? I personally developed this limit chase in order to reduce fees compared to limit orders. For me it worked to increase sharpenratio doesn't mean it will work for you too tho
+An automated limit order chasing system for Hyperliquid that dynamically adjusts limit orders to stay at the best bid/ask, improving fill rates while maintaining price control. But why even use a limit chase? I personally developed this limit chase in order to reduce fees compared to limit orders. For me it worked to increase sharpe ratio (Just because it worked for me does not mean it will work for your specifiy implementation)
 
-
-## Warning
+### Warning
 
 **This bot trades with real money on mainnet. Always test on testnet first and use small position sizes.**
 
