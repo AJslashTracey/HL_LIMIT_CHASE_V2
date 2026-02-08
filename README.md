@@ -25,9 +25,6 @@ python scripts/diagnose_setup.py
 
 4. **Run example:**
 ```bash
-# Testnet (safe)
-TESTNET=true python examples/limit_chase_usage.py
-
 # Mainnet (real money!)
 python examples/limit_chase_usage.py
 ```
