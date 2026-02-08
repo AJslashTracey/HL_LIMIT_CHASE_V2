@@ -111,6 +111,10 @@ HL_LIMIT_CHASE_V2/
 │   └── limit_chase_accuracy.csv
 └── requirements.txt
 ```
+### Structure Diagram
+![Git Diagram](IMGs/HL_limit_chase_Diagram.png)
+
+
 
 ## License
 
