@@ -31,7 +31,7 @@ python examples/limit_chase_usage.py
 Required `.env` variables:
 - `ADDRESS` - Your wallet address
 - `PK` - Your private key
-- `TESTNET` - Set to `true` for testnet (default: `false`)
+- `TESTNET` - Set to `true` (Boolean => false for `Mainnet`)
 
 Optional:
 - `POST_ONLY` - Post-only orders (default: `false`)
