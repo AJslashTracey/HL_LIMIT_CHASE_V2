@@ -3,10 +3,7 @@
 An automated limit order chasing system for Hyperliquid that dynamically adjusts limit orders to stay at the best bid/ask, improving fill rates while maintaining price control. But why even use a limit chase? I personally developed this limit chase in order to reduce fees compared to market orders. For me it worked to increase sharpe ratio (It worked well for my use case, does not guarante any success for other implementations)
 ### Warning
 
-**This bot trades with real money on mainnet. Always test on testnet first and use small position sizes.**
-
-## Quick Start
-
+### Start using limit chase ==> 
 1. **Install dependencies:**
 ```bash
 pip install -r requirements.txt
